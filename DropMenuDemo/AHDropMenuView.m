@@ -50,7 +50,6 @@ CGFloat _navHeight = 64;
         
     }
     return self;
-
 }
 
 - (instancetype)initWithNavigationController:(UINavigationController *)navigationController {
