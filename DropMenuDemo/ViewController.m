@@ -63,7 +63,7 @@
 #pragma mark - AHDropMenuViewDelegate
 - (UIView *)dropMenuHeaderView:(AHDropMenuView *)dropMenuView{
     UIView *view = [[UIView alloc]init];
-    view.frame = CGRectMake(0, 0, 300, 50);
+    view.frame = CGRectMake(50, 0, 200, 50);
     view.backgroundColor = [UIColor orangeColor];
     return view;
 }

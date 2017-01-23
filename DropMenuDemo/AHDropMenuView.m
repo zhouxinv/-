@@ -309,17 +309,6 @@ CGFloat _navHeight = 64;
     
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView *view = [[UIView alloc]init];
-    view.frame = CGRectMake(0, 0, 300, 50);
-    view.backgroundColor = [UIColor purpleColor];
-    return view;
-
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 80;
-}
-
 
 #pragma mark - UITableViewDataSource
 
