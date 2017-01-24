@@ -6,8 +6,6 @@
 //  Copyright © 2017年 GeWei. All rights reserved.
 //
 
-
-//测试主干推送到分支
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
