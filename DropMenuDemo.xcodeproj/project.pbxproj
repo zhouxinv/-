@@ -30,6 +30,7 @@
 		5C45B9921E309F6E003DB72D /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9911E309F6E003DB72D /* check.png */; };
 		5C45B9941E30A088003DB72D /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9931E30A088003DB72D /* check_no.png */; };
 		5C45B9D11E34B451003DB72D /* AHDropMenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9D01E34B451003DB72D /* AHDropMenuViewModel.m */; };
+		5CB1EDF21E35F4DE00D4225C /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB1EDF11E35F4DE00D4225C /* tick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		5C45B9931E30A088003DB72D /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
 		5C45B9CF1E34B451003DB72D /* AHDropMenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuViewModel.h; sourceTree = "<group>"; };
 		5C45B9D01E34B451003DB72D /* AHDropMenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuViewModel.m; sourceTree = "<group>"; };
+		5CB1EDF11E35F4DE00D4225C /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				5C45B9331E2DC1A6003DB72D /* AppDelegate.m */,
 				5C45B9351E2DC1A6003DB72D /* ViewController.h */,
 				5C45B9361E2DC1A6003DB72D /* ViewController.m */,
+				5CB1EDF11E35F4DE00D4225C /* tick.png */,
 				5C45B9381E2DC1A6003DB72D /* Main.storyboard */,
 				5C45B93B1E2DC1A6003DB72D /* Assets.xcassets */,
 				5C45B93D1E2DC1A6003DB72D /* LaunchScreen.storyboard */,
@@ -347,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C45B9941E30A088003DB72D /* check_no.png in Resources */,
+				5CB1EDF21E35F4DE00D4225C /* tick.png in Resources */,
 				5C45B93F1E2DC1A6003DB72D /* LaunchScreen.storyboard in Resources */,
 				5C45B93C1E2DC1A6003DB72D /* Assets.xcassets in Resources */,
 				5C45B9921E309F6E003DB72D /* check.png in Resources */,

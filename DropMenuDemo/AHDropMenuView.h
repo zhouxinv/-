@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol AHDropMenuViewDelegate;
-
+@class AHDropMenuViewModel;
 @interface AHDropMenuView : UIView
 
 @property(nonatomic, weak) id<AHDropMenuViewDelegate> delegate;
@@ -21,20 +21,14 @@
 - (instancetype)init;
 
 /**
- 设置标题的数组
+ 设置数据源
 
- @param dataSource 标题数组
+ @param dataSource cell数据源  单独传入数据源可以在同一个VC中只创建一个MenuView传入不同数据源
  */
-- (void)showWithDataSource:(NSArray <NSString *> *)dataSource;
-/**
- 设置icon图像的数组
- 
- @param imageStrArray 图片数组
- */
-- (void)showWithCelliconsArray:(NSArray <UIImage *> *)imageStrArray;
+- (void)showWithDataSource:(NSArray <AHDropMenuViewModel *> *)dataSource;
 
 /**
- 创建一个下拉菜单
+ 创建一个在导航栏下的下拉菜单
 
  @param navigationController 导航控制器
  */

@@ -20,7 +20,7 @@
 
 @implementation AHDropMenuViewCell
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self){
         self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -30,7 +30,7 @@
     return self;
 }
 
-- (void)createSubViewsAndConstrains{
+- (void)createSubViewsAndConstrains {
     _title = [[UILabel alloc]init];
     _title.textAlignment = NSTextAlignmentCenter;
     _title.font = [UIFont systemFontOfSize:14];
@@ -76,17 +76,21 @@
     _imgView.image = mItem.icon;
     
     if (mItem.selected) {
-        [_checkImg setImage:[UIImage imageNamed:@"check"]];
+        if (mItem.checkImage) {
+            [_checkImg setImage:mItem.checkImage];
+        } else {
+            [_checkImg setImage:[UIImage imageNamed:@"check"]];
+        }
     } else {
         [_checkImg setImage:[UIImage imageNamed:@"check_no"]];
     }
 }
 
-- (void)setTitleFontSize:(CGFloat)fontSize{
+- (void)setTitleFontSize:(CGFloat)fontSize {
     _title.font = [UIFont systemFontOfSize:fontSize];
    
 }
-- (void)setTitleColor:(UIColor *)titleColor{
+- (void)setTitleColor:(UIColor *)titleColor {
     _title.textColor = titleColor;
 }
 

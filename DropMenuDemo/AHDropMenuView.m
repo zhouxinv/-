@@ -11,21 +11,16 @@
 #import "AHDropMenuViewModel.h"
 #import "Masonry.h"
 
-
 static NSString *reuserIdentify = @"AHDropMenuViewCell";
 //默认cell高度
-static CGFloat defaultCellRowHeight = 44;
+static const CGFloat defaultCellRowHeight = 44;
 //tableView的最大高度
 CGFloat _maxTableViewHeight;
-CGFloat _navHeight = 64;
-
 
 
 @interface AHDropMenuView ()<UITableViewDelegate, UITableViewDataSource>
-//数据源数组 -- 标题
-@property(nonatomic, strong) NSMutableArray *dataSoureArr;
-// icon 数组 -- 图片
-@property(nonatomic, strong) NSMutableArray *dataImageStrArr;
+//数据源数组
+@property(nonatomic, strong) NSArray *dataSoureArr;
 //
 @property(nonatomic, strong) UITableView *tableView;
 // headView
@@ -53,7 +48,7 @@ CGFloat _navHeight = 64;
 }
 
 - (instancetype)initWithNavigationController:(UINavigationController *)navigationController {
-
+    CGFloat _navHeight = 64;
     UIViewController *vcBase = navigationController.viewControllers.lastObject;
     CGRect frame = CGRectMake(0, _navHeight, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - _navHeight);
     if (self = [self initWithUIView:vcBase.view frame:frame]) {
@@ -63,7 +58,6 @@ CGFloat _navHeight = 64;
 }
 
 - (instancetype)initWithUIView:(UIView *)view frame:(CGRect)frame {
-//    self = [super initWithFrame:CGRectMake(0, 450 , [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height )];
     self = [super initWithFrame:frame];
     if (self) {
         self.hidden = YES;
@@ -79,6 +73,7 @@ CGFloat _navHeight = 64;
 - (void)createSubViewsAndConstraints {
     _headerView = [[UIView alloc]init];
     _headerView.backgroundColor = [UIColor grayColor];
+    _headerView.layer.masksToBounds = YES;
     [self addSubview:_headerView];
     
     _tableView = [[UITableView alloc]init];
@@ -121,8 +116,6 @@ CGFloat _navHeight = 64;
     //若用户没有设置tableView的高度 默认最多展示8条。
     _maxTableViewHeight = defaultCellRowHeight * 8;
     _isShow = NO;
-    _dataSoureArr = [[NSMutableArray alloc]init];
-    _dataImageStrArr = [[NSMutableArray alloc]init];
     _mutableSet = [[NSMutableIndexSet alloc]init];
 }
 
@@ -144,80 +137,22 @@ CGFloat _navHeight = 64;
     _titleColor = titleColor;
 }
 
-- (void)showWithDataSource:(NSArray <NSString *> *)dataSource {
+- (void)showWithDataSource:(NSArray <AHDropMenuViewModel *> *)dataSource {
+    _dataSoureArr = dataSource;
+    if ([_delegate respondsToSelector:@selector(dropMenuHeaderView:)]) {
+        UIView *vChild = [_delegate dropMenuHeaderView:self];
+        [_headerView addSubview:vChild];
+    }
     
-    //判断数据源是否已经有数据
-    if (_dataSoureArr.count > 0) {
-        //遍历传入的数组
-        [dataSource enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *title = obj;
-            //判断数据源是否小于当前需要取值的index 小于的时候要创建新model
-            if (_dataSoureArr.count <= idx) {
-                AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]init];
-                 model.title = title;
-                [_dataSoureArr addObject:model];
-                
-            }
-            //不小于的时候可以直接从数据源里面取出来model进行赋值
-            else {
-                AHDropMenuViewModel *model = _dataSoureArr[idx];
-                model.title = title;
-            }
-            
-        }];
-        
-    }
-    //数据源中没有数据的时候 创建添加model
-    else {
-        [dataSource enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSString *title = obj;
-            AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]init];
-            model.title = title;
-            [_dataSoureArr addObject:model];
-        }];
-    }
-}
-
-- (void)showWithCelliconsArray:(NSArray <UIImage *> *)imageStrArray {
-    //判断数据源是否已经有数据
-    if (_dataSoureArr.count > 0) {
-        //遍历传入的数组
-        [imageStrArray enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIImage *img = obj;
-            //判断数据源是否小于当前需要取值的index 小于的时候要创建新model
-            if (_dataSoureArr.count <= idx) {
-                AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]init];
-                model.icon = img;
-                [_dataSoureArr addObject:model];
-                
-            }
-            //不小于的时候可以直接从数据源里面取出来model进行赋值
-            else {
-                AHDropMenuViewModel *model = _dataSoureArr[idx];
-                model.icon = img;
-            }
-        }];
-    }
-    //数据源中没有数据的时候 创建添加model
-    else {
-        [imageStrArray enumerateObjectsUsingBlock:^(UIImage * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            UIImage *img = obj;
-            AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]init];
-            model.icon = img;
-            [_dataSoureArr addObject:model];
-        }];
-    }
+    //移除headView
+//    [_headerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 }
 
 - (void)show {
     self.hidden = NO;
     _isShow = YES;
-    if ([_delegate respondsToSelector:@selector(dropMenuHeaderView:)]) {
-        UIView *vChild = [_delegate dropMenuHeaderView:self];
-        [_headerView addSubview:vChild];
-        
-    }
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:.8 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:.8 initialSpringVelocity:3 options:UIViewAnimationOptionCurveLinear animations:^{
         
         CGFloat currentHeaderViewHeight = 0;
         if ([_delegate respondsToSelector:@selector(heightForHeaderView)]) {
@@ -239,7 +174,7 @@ CGFloat _navHeight = 64;
         [_blurredView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height - currentTableViewHeight - currentHeaderViewHeight);
         }];
-        
+        [self layoutIfNeeded];
     }completion:^(BOOL finished) {
         
         
@@ -249,7 +184,7 @@ CGFloat _navHeight = 64;
 
 - (void)hide {
     _isShow = NO;
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:.8 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:1 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseOut animations:^{
        
         [_headerView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
@@ -262,9 +197,10 @@ CGFloat _navHeight = 64;
         [_blurredView mas_updateConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(0);
         }];
-        
-    }completion:^(BOOL finished) {
-        self.hidden = YES;
+        [self layoutIfNeeded];
+        }completion:^(BOOL finished) {
+       self.hidden = YES;
+
     }];
     
 }
