@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@class AHDropMenuViewModel;
+@class AHDropMenuItem;
 @protocol AHDropMenuViewCellDelegate;
 @interface AHDropMenuViewCell : UITableViewCell
 
@@ -17,11 +17,7 @@
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
 // 为cell赋值
-- (void)makeCellWithModel:(AHDropMenuViewModel *)mItem indexPath:(NSIndexPath *)indexPath;
-//设置标题字体大小
-- (void)setTitleFontSize:(CGFloat)fontSize;
-//设置标题字体颜色
-- (void)setTitleColor:(UIColor *)titleColor;
+- (void)makeCellWithModel:(AHDropMenuItem *)mItem indexPath:(NSIndexPath *)indexPath;
 
 @end
 

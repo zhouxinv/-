@@ -7,7 +7,7 @@
 //
 
 #import "AHDropMenuViewCell.h"
-#import "AHDropMenuViewModel.h"
+#import "AHDropMenuItem.h"
 #import "Masonry.h"
 
 @interface AHDropMenuViewCell ()
@@ -49,7 +49,7 @@
     [self.contentView addSubview:_checkImg];
     
     [_title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.equalTo(self);
+        make.center.equalTo(self.contentView);
         make.width.mas_lessThanOrEqualTo(120);
     }];
     [_imgView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -61,7 +61,7 @@
     [_lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.mas_equalTo(0);
         make.height.mas_equalTo(0.5);
-        make.bottom.equalTo(self);
+        make.bottom.equalTo(self.contentView);
     }];
     [_checkImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.trailing.mas_equalTo(-30);
@@ -70,30 +70,25 @@
     }];
 }
 
-- (void)makeCellWithModel:(AHDropMenuViewModel *)mItem indexPath:(NSIndexPath *)indexPath {
+- (void)makeCellWithModel:(AHDropMenuItem *)mItem indexPath:(NSIndexPath *)indexPath {
+    //为cell 赋值
     _title.text = mItem.title;
-    
-    _imgView.image = mItem.icon;
-    
+    //为cell 设置样式
+    //状态为被选中时
     if (mItem.selected) {
-        if (mItem.checkImage) {
-            [_checkImg setImage:mItem.checkImage];
-        } else {
-            [_checkImg setImage:[UIImage imageNamed:@"check"]];
-        }
+        _imgView.image = mItem.iconHighlighted;
+        self.backgroundColor = mItem.backgroundColorHighlighted;
+        _checkImg.image = mItem.checkImageSelected;
+        _title.font = mItem.titleFontHighlighted;
+        _title.textColor = mItem.titleColorHighlighted;
+        
     } else {
-        [_checkImg setImage:[UIImage imageNamed:@"check_no"]];
+        _imgView.image = mItem.icon;
+        self.backgroundColor = mItem.backgroundColor;
+        _checkImg.image = mItem.checkImage;
+        _title.font = mItem.titleFont;
+        _title.textColor = mItem.titleColor;
     }
 }
-
-- (void)setTitleFontSize:(CGFloat)fontSize {
-    _title.font = [UIFont systemFontOfSize:fontSize];
-   
-}
-- (void)setTitleColor:(UIColor *)titleColor {
-    _title.textColor = titleColor;
-}
-
-
 
 @end

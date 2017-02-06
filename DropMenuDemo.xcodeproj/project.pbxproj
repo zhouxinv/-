@@ -29,7 +29,7 @@
 		5C45B98C1E30530E003DB72D /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9821E30530E003DB72D /* ViewController+MASAdditions.m */; };
 		5C45B9921E309F6E003DB72D /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9911E309F6E003DB72D /* check.png */; };
 		5C45B9941E30A088003DB72D /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9931E30A088003DB72D /* check_no.png */; };
-		5C45B9D11E34B451003DB72D /* AHDropMenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9D01E34B451003DB72D /* AHDropMenuViewModel.m */; };
+		5C45B9D11E34B451003DB72D /* AHDropMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */; };
 		5CB1EDF21E35F4DE00D4225C /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB1EDF11E35F4DE00D4225C /* tick.png */; };
 /* End PBXBuildFile section */
 
@@ -98,8 +98,8 @@
 		5C45B9821E30530E003DB72D /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		5C45B9911E309F6E003DB72D /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		5C45B9931E30A088003DB72D /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
-		5C45B9CF1E34B451003DB72D /* AHDropMenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuViewModel.h; sourceTree = "<group>"; };
-		5C45B9D01E34B451003DB72D /* AHDropMenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuViewModel.m; sourceTree = "<group>"; };
+		5C45B9CF1E34B451003DB72D /* AHDropMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuItem.h; sourceTree = "<group>"; };
+		5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuItem.m; sourceTree = "<group>"; };
 		5CB1EDF11E35F4DE00D4225C /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,8 +202,8 @@
 				5C45B9641E2DC1F4003DB72D /* AHDropMenuView.m */,
 				5C45B9661E2DC219003DB72D /* AHDropMenuViewCell.h */,
 				5C45B9671E2DC219003DB72D /* AHDropMenuViewCell.m */,
-				5C45B9CF1E34B451003DB72D /* AHDropMenuViewModel.h */,
-				5C45B9D01E34B451003DB72D /* AHDropMenuViewModel.m */,
+				5C45B9CF1E34B451003DB72D /* AHDropMenuItem.h */,
+				5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */,
 			);
 			name = AHDropMenu;
 			sourceTree = "<group>";
@@ -394,7 +394,7 @@
 				5C45B9841E30530E003DB72D /* MASConstraint.m in Sources */,
 				5C45B9861E30530E003DB72D /* MASLayoutConstraint.m in Sources */,
 				5C45B9681E2DC219003DB72D /* AHDropMenuViewCell.m in Sources */,
-				5C45B9D11E34B451003DB72D /* AHDropMenuViewModel.m in Sources */,
+				5C45B9D11E34B451003DB72D /* AHDropMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "AHDropMenuView.h"
-#import "AHDropMenuViewModel.h"
+#import "AHDropMenuItem.h"
+
 
 @interface ViewController ()<AHDropMenuViewDelegate>
 @property(nonatomic, strong) AHDropMenuView *dropView;
+@property (nonatomic, strong) NSMutableArray *dataSourceArr;
 
 @end
 
@@ -27,7 +29,8 @@
     self.navigationItem.titleView = button;
     
     //1.设置model
-    NSMutableArray *dataSourceArr = [NSMutableArray array];
+    _dataSourceArr = [NSMutableArray new];
+
     NSArray *arr = @[@"1.CELTICS",@"2.CLIPPERS",@"3.WARRIORS",@"4.CELTICS",@"5.CLIPPERS",@"6.WARRIORS",@"7.CELTICS",@"8.CLIPPERS",@"9.WARRIORS",@"10.CELTICS",@"11.CLIPPERS",@"12.WARRIORS",@"13.CELTICS",@"14.CLIPPERS",@"15.WARRIORS"];
     NSMutableArray *iconMutableArr = [NSMutableArray array];
     NSArray *iconArray = @[@"1",@"2", @"3", @"4",@"5", @"3",@"1",@"2", @"5",@"4",@"2", @"3"];
@@ -36,40 +39,47 @@
         
         [iconMutableArr addObject:img];
     }];
+
+    __weak typeof(*&self) wSelf = self;
+    
     [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        __weak typeof(*&self) self = wSelf;
+        AHDropMenuItem *model;
         if (iconMutableArr.count > idx) {
             //几个没有头像的特殊情况处理
             if (idx == 4 || idx == 7 || idx == 8) {
-                AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]initWithIconImage:nil title:obj];
-                [dataSourceArr addObject:model];
+                model = [[AHDropMenuItem alloc]initWithTitle:obj icon:nil iconHighlighted:nil];
+                
             }
             //这两个被选择的时候对勾传入自定义图片
             else if (idx == 1 || idx == 2){
-                AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]initWithIconImage:iconMutableArr[idx] title:obj checkImage:[UIImage imageNamed:@"tick"]];
-                [dataSourceArr addObject:model];
+                model = [[AHDropMenuItem alloc]initWithTitle:obj icon:iconMutableArr[idx]];
+                [model setTitleFont:[UIFont systemFontOfSize:12]];
+                model.checkImageSelected = [UIImage imageNamed:@"tick"];
+                
             }
             else {
-                AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]initWithIconImage:iconMutableArr[idx] title:obj];
-                [dataSourceArr addObject:model];
+                model = [[AHDropMenuItem alloc]initWithTitle:obj icon:iconMutableArr[idx]];
             }
             
         } else {
-            AHDropMenuViewModel *model = [[AHDropMenuViewModel alloc]initWithIconImage:nil title:obj];
-            [dataSourceArr addObject:model];
+            model = [[AHDropMenuItem alloc]initWithTitle:obj icon:nil];
         }
         
+        #warning 如果这样设置cell的话, 比如调用者只设置了cell的背景色,高亮的时候就用默认的高亮背景色了.
+//        model.backgroundColor = [UIColor colorWithRed:0.976 green:0.84 blue:0.95 alpha:1];
+        [self.dataSourceArr addObject:model];
     }];
     
-    _dropView = [[AHDropMenuView alloc]initWithNavigationController:self.navigationController];
-    _dropView.delegate = self;
+//    _dropView = [[AHDropMenuView alloc] initWithNavigationController:self.navigationController withDelegate:self];
+    _dropView = [[AHDropMenuView alloc] initWithViewController:self withDelegate:self];
     // 添加数据源
-    [_dropView showWithDataSource:dataSourceArr];
+//    [_dropView showWithDataSource:dataSourceArr];
     
+
     // 2. 多选
     _dropView.isMultiselect = YES;
-    //3.标题颜色大小
-    [_dropView setTitleColor:[UIColor blueColor]];
-    [_dropView setTitleFontSize:12];
+   
     //4. 设置下拉菜单的最大高度
     [_dropView maxTableViewMaxRowNum:6];
     
@@ -85,16 +95,21 @@
     }
 }
 #pragma mark - AHDropMenuViewDelegate
+
+- (NSArray<AHDropMenuItem *> *)dataSourceForDropMenu {
+    return _dataSourceArr;
+}
+
 - (UIView *)dropMenuHeaderView:(AHDropMenuView *)dropMenuView {
     //传入的headView的frame由外界控制，内部不做处理
     UIView *view = [[UIView alloc]init];
-    view.frame = CGRectMake(10, 0, [UIScreen mainScreen].bounds.size.width - 20 , 50);
+    view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 20 , 50);
     view.backgroundColor = [UIColor orangeColor];
     return view;
 }
 
-- (CGFloat)heightForHeaderView {
-    return 50;
+- (CGFloat)dropMenuHeaderViewHeight {
+    return 50.0;
 }
 
 - (void)dropMenuView:(AHDropMenuView *)dropMenuView didSelectAtIndex:(NSIndexPath *)indexPath {
