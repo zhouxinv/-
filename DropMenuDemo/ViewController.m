@@ -81,7 +81,7 @@
     _dropView.isMultiselect = YES;
    
     //4. 设置下拉菜单的最大高度
-    [_dropView maxTableViewMaxRowNum:6];
+    [_dropView maxTableViewMaxRowNum:4];
     
 }
 
@@ -102,10 +102,12 @@
 
 - (UIView *)dropMenuHeaderView:(AHDropMenuView *)dropMenuView {
     //传入的headView的frame由外界控制，内部不做处理
-    UIView *view = [[UIView alloc]init];
-    view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width - 20 , 50);
-    view.backgroundColor = [UIColor orangeColor];
-    return view;
+    UILabel *lab = [[UILabel alloc]init];
+    lab.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width , 50);
+    lab.backgroundColor = [UIColor orangeColor];
+    lab.text = @"设置你自己想要的headView";
+    lab.textAlignment = NSTextAlignmentCenter;
+    return lab;
 }
 
 - (CGFloat)dropMenuHeaderViewHeight {

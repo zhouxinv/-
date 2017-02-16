@@ -79,17 +79,13 @@ CGFloat _currentHeadViewHeight;
         if (view) {
             _vSuper = view; //用屏幕高度也可以吧 即使是按钮也是屏幕的高度啊?
             [view addSubview:self];
-//            [self mas_makeConstraints:^(MASConstraintMaker *make){
-//                make.top.mas_equalTo(0);
-//                make.leading.trailing.mas_equalTo(0);
-//                make.height.mas_equalTo(0.1);
-//            }];
-            
-            [self mas_remakeConstraints:^(MASConstraintMaker *make){
+            self.backgroundColor = [UIColor clearColor];
+            [self mas_makeConstraints:^(MASConstraintMaker *make){
                 make.top.mas_equalTo(64);
                 make.leading.trailing.mas_equalTo(0);
-                make.height.mas_equalTo(_vSuper.mas_height).with.offset(-64);
+                make.height.mas_equalTo(_vSuper.frame.size.height);
             }];
+            
         }
         
         [self initialValue];
@@ -109,12 +105,8 @@ CGFloat _currentHeadViewHeight;
     }
     _indexSet = [[NSMutableIndexSet alloc] init];
     //若用户没有设置tableView的高度 默认最多展示8条。
-    if(_arrDataSource.count > _maxRowNum){
-        _currentTableViewHeight = defaultCellRowHeight * 8;
-        
-    } else {
-        _currentTableViewHeight = defaultCellRowHeight * _arrDataSource.count;
-    }
+    NSInteger maxRowNum = _arrDataSource.count > _maxRowNum ? _maxRowNum : _arrDataSource.count;
+    _currentTableViewHeight = defaultCellRowHeight * maxRowNum;
     _isShow = NO;
 }
 
@@ -132,6 +124,7 @@ CGFloat _currentHeadViewHeight;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     _tableView.bounces = NO;
+//    _tableView.contentInset = UIEdgeInsetsMake(-64, 0, 0, 0);
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self addSubview:_tableView];
@@ -139,29 +132,16 @@ CGFloat _currentHeadViewHeight;
 //    ------------------------------  孙老师  -----------------------------------
     [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.mas_equalTo(0);
-        make.top.bottom.mas_equalTo(0);
+        make.top.mas_equalTo(0);
+        make.height.mas_equalTo(0);
     }];
     
     [_blurredView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.mas_equalTo(0);
-        make.top.bottom.mas_equalTo(0);
+        make.top.equalTo(_tableView.mas_bottom);
+        make.height.mas_equalTo(_vSuper.mas_height);
     }];
-//    ------------------------------  我的  -----------------------------------
-    
-//    [_tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.trailing.mas_equalTo(0);
-//        make.top.mas_equalTo(0);
-//        make.height.mas_equalTo(_currentTableViewHeight);
-////        make.bottom.mas_equalTo(0);
-//    }];
-//    
-//    [_blurredView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.trailing.mas_equalTo(0);
-//        make.top.equalTo(_tableView.mas_bottom);
-//        make.bottom.mas_equalTo(0);
-////        make.height.mas_equalTo(0);
-//    }];
-    
+
     
     
     
@@ -175,15 +155,13 @@ CGFloat _currentHeadViewHeight;
             if (_delegate && [_delegate respondsToSelector:@selector(dropMenuHeaderViewHeight)]) {
                 headerHeight = [_delegate dropMenuHeaderViewHeight];
                 //tableView的高度最多为60
-                if (headerHeight > 60) {
-                    headerHeight = 60;
-                }
+                
+                headerHeight = headerHeight > 60 ? 60 : headerHeight;
                 _currentHeadViewHeight = headerHeight;
-                _currentTableViewHeight = _currentTableViewHeight + headerHeight;
+                _currentTableViewHeight += headerHeight;
             }
             
             _headerView = [[UIView alloc] init];
-            _headerView.backgroundColor = [UIColor blueColor];
             [_headerView addSubview:vHeaderChild];
             _tableView.tableHeaderView = _headerView;
             [_headerView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -206,67 +184,70 @@ CGFloat _currentHeadViewHeight;
 }
 #pragma mark - Public
 - (void)maxTableViewMaxRowNum:(NSInteger)maxRowNum {
-    if (maxRowNum > _maxRowNum) {
-        maxRowNum = _maxRowNum;
-    }
+    
+    maxRowNum = maxRowNum > _maxRowNum ? _maxRowNum : maxRowNum;
     _currentTableViewHeight = maxRowNum * defaultCellRowHeight + _currentHeadViewHeight;
     [_tableView reloadData];
 }
 
 - (void)show {
-    self.hidden = NO;
-    _isShow = YES;
-    
-    [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(0);
-        make.leading.trailing.mas_equalTo(0);
-        make.height.mas_equalTo(_currentTableViewHeight);
-    }];
-    [_blurredView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.mas_equalTo(0);
-        make.top.equalTo(_tableView.mas_bottom);
-         make.height.mas_equalTo(_vSuper.mas_height).with.offset(-64);
-//        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height - _currentTableViewHeight);
-    }];
-    
    
-    
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        
+    _isShow = YES;
+    [_tableView setContentOffset:CGPointMake(0, 0) animated:YES];
 
-        [self layoutIfNeeded];
-    }completion:^(BOOL finished) {
+//    [self mas_remakeConstraints:^(MASConstraintMaker *make){
+//                make.top.mas_equalTo(64);
+//                make.leading.trailing.mas_equalTo(0);
+//                make.height.mas_equalTo(_vSuper.mas_height);
+//    }];
+//    [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(64);
+//        make.leading.trailing.mas_equalTo(0);
+//        make.height.mas_equalTo(0);
+//    }];
+//    [_blurredView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.trailing.mas_equalTo(0);
+//        make.top.equalTo(_tableView.mas_bottom);
+//         make.height.mas_equalTo(_vSuper.mas_height).with.offset(-64);
+////        make.height.mas_equalTo([UIScreen mainScreen].bounds.size.height - _currentTableViewHeight);
+//    }];
+    self.hidden = NO;
+    self.alpha = 0;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.alpha = 1;
         
+    } completion:^(BOOL finished) {
+        [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(0);
+            make.leading.trailing.mas_equalTo(0);
+            make.height.mas_equalTo(_currentTableViewHeight);
+        }];
         
+        [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:.5 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            
+            [self layoutIfNeeded];
+        }completion:^(BOOL finished) {
+            
+        }];
     }];
-    
+  
 }
 
 - (void)hide {
     _isShow = NO;
 
-//    [self mas_remakeConstraints:^(MASConstraintMaker *make){
-//        make.top.mas_equalTo(64);
-//        make.leading.trailing.mas_equalTo(0);
-//        make.height.mas_equalTo(0);
-//    }];
-    
     [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
         make.leading.trailing.mas_equalTo(0);
         make.height.mas_equalTo(0);
     }];
-    [_blurredView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.leading.trailing.mas_equalTo(0);
-        make.top.equalTo(_tableView.mas_bottom);
-        make.height.mas_equalTo(0);
-    }];
-    
-    [UIView animateWithDuration:0.4 delay:0 usingSpringWithDamping:.8 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-       [self layoutIfNeeded];
+    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:.8 initialSpringVelocity:5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [self layoutIfNeeded];
+        self.alpha = 0;
+    }completion:^(BOOL finished) {
         
-        }completion:^(BOOL finished) {
-       self.hidden = YES;
+        self.hidden = YES;
+        self.alpha = 1;
 
     }];
     
