@@ -18,6 +18,14 @@
     return nil;
 }
 
+- (instancetype)initWithTitle:(NSString *)title {
+    
+    if (self = [self initWithTitle:title icon:nil]) {
+        
+    }
+    return  self;
+}
+
 - (instancetype)initWithTitle:(NSString *)title icon:(UIImage *)icon{
     if (self = [self initWithTitle:title icon:icon iconHighlighted:nil]) {
         
@@ -56,6 +64,9 @@
     _titleFontHighlighted = [UIFont systemFontOfSize:14];
     _titleColor = [UIColor blackColor];
     _titleColorHighlighted = [UIColor blackColor];
+    
+    
+    _titleLayout = AHDropMenuItemTitleLayoutCenter;
 }
 
 - (void)setItemStyleWithbackgroundColor:(UIColor *)backgroundColor
@@ -78,53 +89,10 @@
     
 }
 
-
-- (void)setBackgroundColor:(UIColor *)backgroundColor {
-    if (backgroundColor) {
-        _backgroundColor = backgroundColor;
-    }
+- (void)setItemStyleWithTitleLayout:(AHDropMenuItemTitleLayout)titleLayout {
+    _titleLayout = titleLayout;
 }
 
-- (void)setBackgroundColorHighlighted:(UIColor *)backgroundColorHighlighted {
-    if (backgroundColorHighlighted) {
-        _backgroundColorHighlighted = backgroundColorHighlighted;
-    }
-}
-
-- (void)setCheckImage:(UIImage *)checkImage {
-    if (checkImage) {
-        _checkImage = checkImage;
-    }
-}
-
-- (void)setCheckImageSelected:(UIImage *)checkImageSelected {
-    if (checkImageSelected) {
-        _checkImageSelected = checkImageSelected;
-    }
-}
-
-- (void)setTitleFont:(UIFont *)titleFont {
-    if (titleFont) {
-        _titleFont = titleFont;
-    }
-}
-- (void)setTitleFontHighlighted:(UIFont *)titleFontHighlighted {
-    if (titleFontHighlighted) {
-        _titleFontHighlighted = titleFontHighlighted;
-    }
-}
-
-- (void)setTitleColor:(UIColor *)titleColor {
-    if (titleColor) {
-        _titleColor = titleColor;
-    }
-}
-
-- (void)setTitleColorHighlighted:(UIColor *)titleColorHighlighted {
-    if (titleColorHighlighted) {
-        _titleColorHighlighted = titleColorHighlighted;
-    }
-}
 
 
 @end

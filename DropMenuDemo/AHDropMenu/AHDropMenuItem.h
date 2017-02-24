@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+
+typedef enum : NSUInteger {
+    /** 标题居左 */
+    AHDropMenuItemTitleLayoutLeft,
+    /** 标题居中 */
+    AHDropMenuItemTitleLayoutCenter,
+    
+} AHDropMenuItemTitleLayout;
+
 @interface AHDropMenuItem : NSObject
 #pragma mark - 基础项
 /** 可选项标题 */
@@ -38,7 +47,13 @@
 /** 标题文字高亮颜色 */
 @property (nonatomic, strong) UIColor *titleColorHighlighted;
 
+#pragma mark - UI布局样式
+/** 标题靠左 */
+@property(nonatomic, assign) AHDropMenuItemTitleLayout titleLayout;
+
 #pragma mark - initializer
+- (instancetype)initWithTitle:(NSString *)title;
+
 - (instancetype)initWithTitle:(NSString *)title icon:(UIImage *)icon;
 
 - (instancetype)initWithTitle:(NSString *)title
@@ -54,5 +69,7 @@
                   titleColorHighlighted:(UIColor *)titleColorHighlighted
                               titleFont:(UIFont *)titleFont
                    titleFontHighlighted:(UIFont *)titleFontHighlighted;
+
+- (void)setItemStyleWithTitleLayout:(AHDropMenuItemTitleLayout)titleLayout;
 
 @end

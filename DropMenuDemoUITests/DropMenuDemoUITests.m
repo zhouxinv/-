@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 
+#import "AHDropMenuView.h"
 @interface DropMenuDemoUITests : XCTestCase
 
 @end
@@ -31,6 +32,16 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
+
+- (void)testInitWithNavigationController:(UINavigationController *)navigationController withDelegate:(id<AHDropMenuViewDelegate>)delegate {
+    
+    XCUIApplication *app = [[XCUIApplication alloc] init];
+    [app.tables.staticTexts[@"5.CLIPPERS"] swipeDown];
+    [app.navigationBars[@"Drop"].buttons[@"Drop"] tap];
+    [[[[[[[app.otherElements containingType:XCUIElementTypeNavigationBar identifier:@"Drop"] childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element childrenMatchingType:XCUIElementTypeOther].element tap];
+    
+}
+
 
 - (void)testExample {
     // Use recording to get started writing UI tests.

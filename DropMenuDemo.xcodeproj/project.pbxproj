@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0C93EE1E600A34000F07C1 /* AHDropMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C93E61E600A34000F07C1 /* AHDropMenuItem.m */; };
+		5C0C93EF1E600A34000F07C1 /* AHDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C93E81E600A34000F07C1 /* AHDropMenuView.m */; };
+		5C0C93F01E600A34000F07C1 /* AHDropMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C93EA1E600A34000F07C1 /* AHDropMenuViewCell.m */; };
+		5C0C93F11E600A34000F07C1 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0C93EB1E600A34000F07C1 /* check.png */; };
+		5C0C93F21E600A34000F07C1 /* icon_box-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0C93EC1E600A34000F07C1 /* icon_box-checked.png */; };
+		5C0C93F31E600A34000F07C1 /* icon_box-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C0C93ED1E600A34000F07C1 /* icon_box-empty.png */; };
+		5C0C93F71E600BE8000F07C1 /* ACDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C93F61E600BE8000F07C1 /* ACDefine.m */; };
+		5C0C93FD1E600E89000F07C1 /* UIImage+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0C93FC1E600E89000F07C1 /* UIImage+Size.m */; };
 		5C45B9311E2DC1A6003DB72D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9301E2DC1A6003DB72D /* main.m */; };
 		5C45B9341E2DC1A6003DB72D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9331E2DC1A6003DB72D /* AppDelegate.m */; };
 		5C45B9371E2DC1A6003DB72D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9361E2DC1A6003DB72D /* ViewController.m */; };
@@ -15,8 +23,6 @@
 		5C45B93F1E2DC1A6003DB72D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B93D1E2DC1A6003DB72D /* LaunchScreen.storyboard */; };
 		5C45B94A1E2DC1A6003DB72D /* DropMenuDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9491E2DC1A6003DB72D /* DropMenuDemoTests.m */; };
 		5C45B9551E2DC1A6003DB72D /* DropMenuDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9541E2DC1A6003DB72D /* DropMenuDemoUITests.m */; };
-		5C45B9651E2DC1F4003DB72D /* AHDropMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9641E2DC1F4003DB72D /* AHDropMenuView.m */; };
-		5C45B9681E2DC219003DB72D /* AHDropMenuViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9671E2DC219003DB72D /* AHDropMenuViewCell.m */; };
 		5C45B9831E30530E003DB72D /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B96B1E30530E003DB72D /* MASCompositeConstraint.m */; };
 		5C45B9841E30530E003DB72D /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B96E1E30530E003DB72D /* MASConstraint.m */; };
 		5C45B9851E30530E003DB72D /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9701E30530E003DB72D /* MASConstraintMaker.m */; };
@@ -27,9 +33,6 @@
 		5C45B98A1E30530E003DB72D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B97D1E30530E003DB72D /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		5C45B98B1E30530E003DB72D /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B97F1E30530E003DB72D /* View+MASAdditions.m */; };
 		5C45B98C1E30530E003DB72D /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9821E30530E003DB72D /* ViewController+MASAdditions.m */; };
-		5C45B9921E309F6E003DB72D /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9911E309F6E003DB72D /* check.png */; };
-		5C45B9941E30A088003DB72D /* check_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C45B9931E30A088003DB72D /* check_no.png */; };
-		5C45B9D11E34B451003DB72D /* AHDropMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */; };
 		5CB1EDF21E35F4DE00D4225C /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 5CB1EDF11E35F4DE00D4225C /* tick.png */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C0C93E51E600A34000F07C1 /* AHDropMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuItem.h; sourceTree = "<group>"; };
+		5C0C93E61E600A34000F07C1 /* AHDropMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuItem.m; sourceTree = "<group>"; };
+		5C0C93E71E600A34000F07C1 /* AHDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuView.h; sourceTree = "<group>"; };
+		5C0C93E81E600A34000F07C1 /* AHDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuView.m; sourceTree = "<group>"; };
+		5C0C93E91E600A34000F07C1 /* AHDropMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuViewCell.h; sourceTree = "<group>"; };
+		5C0C93EA1E600A34000F07C1 /* AHDropMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuViewCell.m; sourceTree = "<group>"; };
+		5C0C93EB1E600A34000F07C1 /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
+		5C0C93EC1E600A34000F07C1 /* icon_box-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_box-checked.png"; sourceTree = "<group>"; };
+		5C0C93ED1E600A34000F07C1 /* icon_box-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_box-empty.png"; sourceTree = "<group>"; };
+		5C0C93F51E600BE8000F07C1 /* ACDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDefine.h; sourceTree = "<group>"; };
+		5C0C93F61E600BE8000F07C1 /* ACDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDefine.m; sourceTree = "<group>"; };
+		5C0C93FB1E600E89000F07C1 /* UIImage+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Size.h"; sourceTree = "<group>"; };
+		5C0C93FC1E600E89000F07C1 /* UIImage+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Size.m"; sourceTree = "<group>"; };
 		5C45B92C1E2DC1A6003DB72D /* DropMenuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DropMenuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C45B9301E2DC1A6003DB72D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5C45B9321E2DC1A6003DB72D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -67,10 +83,6 @@
 		5C45B9501E2DC1A6003DB72D /* DropMenuDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropMenuDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C45B9541E2DC1A6003DB72D /* DropMenuDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DropMenuDemoUITests.m; sourceTree = "<group>"; };
 		5C45B9561E2DC1A6003DB72D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C45B9631E2DC1F4003DB72D /* AHDropMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuView.h; sourceTree = "<group>"; };
-		5C45B9641E2DC1F4003DB72D /* AHDropMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuView.m; sourceTree = "<group>"; };
-		5C45B9661E2DC219003DB72D /* AHDropMenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuViewCell.h; sourceTree = "<group>"; };
-		5C45B9671E2DC219003DB72D /* AHDropMenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuViewCell.m; sourceTree = "<group>"; };
 		5C45B96A1E30530E003DB72D /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		5C45B96B1E30530E003DB72D /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
 		5C45B96C1E30530E003DB72D /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
@@ -96,10 +108,6 @@
 		5C45B9801E30530E003DB72D /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
 		5C45B9811E30530E003DB72D /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		5C45B9821E30530E003DB72D /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
-		5C45B9911E309F6E003DB72D /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
-		5C45B9931E30A088003DB72D /* check_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_no.png; sourceTree = "<group>"; };
-		5C45B9CF1E34B451003DB72D /* AHDropMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDropMenuItem.h; sourceTree = "<group>"; };
-		5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHDropMenuItem.m; sourceTree = "<group>"; };
 		5CB1EDF11E35F4DE00D4225C /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +136,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0C93E41E600A34000F07C1 /* AHDropMenu */ = {
+			isa = PBXGroup;
+			children = (
+				5C0C93E51E600A34000F07C1 /* AHDropMenuItem.h */,
+				5C0C93E61E600A34000F07C1 /* AHDropMenuItem.m */,
+				5C0C93E71E600A34000F07C1 /* AHDropMenuView.h */,
+				5C0C93E81E600A34000F07C1 /* AHDropMenuView.m */,
+				5C0C93E91E600A34000F07C1 /* AHDropMenuViewCell.h */,
+				5C0C93EA1E600A34000F07C1 /* AHDropMenuViewCell.m */,
+				5C0C93EB1E600A34000F07C1 /* check.png */,
+				5C0C93EC1E600A34000F07C1 /* icon_box-checked.png */,
+				5C0C93ED1E600A34000F07C1 /* icon_box-empty.png */,
+			);
+			path = AHDropMenu;
+			sourceTree = "<group>";
+		};
+		5C0C93F41E600BE8000F07C1 /* Define */ = {
+			isa = PBXGroup;
+			children = (
+				5C0C93F51E600BE8000F07C1 /* ACDefine.h */,
+				5C0C93F61E600BE8000F07C1 /* ACDefine.m */,
+			);
+			path = Define;
+			sourceTree = "<group>";
+		};
 		5C45B9231E2DC1A6003DB72D = {
 			isa = PBXGroup;
 			children = (
@@ -151,7 +184,8 @@
 		5C45B92E1E2DC1A6003DB72D /* DropMenuDemo */ = {
 			isa = PBXGroup;
 			children = (
-				5C45B9621E2DC1BF003DB72D /* AHDropMenu */,
+				5C0C93F41E600BE8000F07C1 /* Define */,
+				5C0C93E41E600A34000F07C1 /* AHDropMenu */,
 				5C45B9321E2DC1A6003DB72D /* AppDelegate.h */,
 				5C45B9331E2DC1A6003DB72D /* AppDelegate.m */,
 				5C45B9351E2DC1A6003DB72D /* ViewController.h */,
@@ -171,6 +205,8 @@
 			isa = PBXGroup;
 			children = (
 				5C45B9301E2DC1A6003DB72D /* main.m */,
+				5C0C93FB1E600E89000F07C1 /* UIImage+Size.h */,
+				5C0C93FC1E600E89000F07C1 /* UIImage+Size.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -191,21 +227,6 @@
 				5C45B9561E2DC1A6003DB72D /* Info.plist */,
 			);
 			path = DropMenuDemoUITests;
-			sourceTree = "<group>";
-		};
-		5C45B9621E2DC1BF003DB72D /* AHDropMenu */ = {
-			isa = PBXGroup;
-			children = (
-				5C45B9911E309F6E003DB72D /* check.png */,
-				5C45B9931E30A088003DB72D /* check_no.png */,
-				5C45B9631E2DC1F4003DB72D /* AHDropMenuView.h */,
-				5C45B9641E2DC1F4003DB72D /* AHDropMenuView.m */,
-				5C45B9661E2DC219003DB72D /* AHDropMenuViewCell.h */,
-				5C45B9671E2DC219003DB72D /* AHDropMenuViewCell.m */,
-				5C45B9CF1E34B451003DB72D /* AHDropMenuItem.h */,
-				5C45B9D01E34B451003DB72D /* AHDropMenuItem.m */,
-			);
-			name = AHDropMenu;
 			sourceTree = "<group>";
 		};
 		5C45B9691E30530E003DB72D /* Masonry */ = {
@@ -349,11 +370,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C45B9941E30A088003DB72D /* check_no.png in Resources */,
 				5CB1EDF21E35F4DE00D4225C /* tick.png in Resources */,
+				5C0C93F11E600A34000F07C1 /* check.png in Resources */,
+				5C0C93F21E600A34000F07C1 /* icon_box-checked.png in Resources */,
+				5C0C93F31E600A34000F07C1 /* icon_box-empty.png in Resources */,
 				5C45B93F1E2DC1A6003DB72D /* LaunchScreen.storyboard in Resources */,
 				5C45B93C1E2DC1A6003DB72D /* Assets.xcassets in Resources */,
-				5C45B9921E309F6E003DB72D /* check.png in Resources */,
 				5C45B93A1E2DC1A6003DB72D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,19 +404,21 @@
 				5C45B98A1E30530E003DB72D /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				5C45B9371E2DC1A6003DB72D /* ViewController.m in Sources */,
 				5C45B9881E30530E003DB72D /* MASViewConstraint.m in Sources */,
-				5C45B9651E2DC1F4003DB72D /* AHDropMenuView.m in Sources */,
 				5C45B9341E2DC1A6003DB72D /* AppDelegate.m in Sources */,
 				5C45B9311E2DC1A6003DB72D /* main.m in Sources */,
 				5C45B98B1E30530E003DB72D /* View+MASAdditions.m in Sources */,
+				5C0C93F71E600BE8000F07C1 /* ACDefine.m in Sources */,
 				5C45B9831E30530E003DB72D /* MASCompositeConstraint.m in Sources */,
+				5C0C93FD1E600E89000F07C1 /* UIImage+Size.m in Sources */,
 				5C45B9871E30530E003DB72D /* MASViewAttribute.m in Sources */,
 				5C45B9851E30530E003DB72D /* MASConstraintMaker.m in Sources */,
 				5C45B9891E30530E003DB72D /* NSArray+MASAdditions.m in Sources */,
 				5C45B98C1E30530E003DB72D /* ViewController+MASAdditions.m in Sources */,
+				5C0C93EF1E600A34000F07C1 /* AHDropMenuView.m in Sources */,
+				5C0C93EE1E600A34000F07C1 /* AHDropMenuItem.m in Sources */,
+				5C0C93F01E600A34000F07C1 /* AHDropMenuViewCell.m in Sources */,
 				5C45B9841E30530E003DB72D /* MASConstraint.m in Sources */,
 				5C45B9861E30530E003DB72D /* MASLayoutConstraint.m in Sources */,
-				5C45B9681E2DC219003DB72D /* AHDropMenuViewCell.m in Sources */,
-				5C45B9D11E34B451003DB72D /* AHDropMenuItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

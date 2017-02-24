@@ -16,20 +16,13 @@
 @property(nonatomic, weak) id<AHDropMenuViewCellDelegate> delegate;
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
-// 为cell赋值
+/** 为cell赋值 **/
 - (void)makeCellWithModel:(AHDropMenuItem *)mItem indexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @protocol AHDropMenuViewCellDelegate <NSObject>
 
-//自定义cell 暂时没实现
-//- (void)configCell:(CGFloat)rowHeight
-//   BackgroundColor:(UIColor *)backgroundColor
-//              Font:(UIFont *)font
-//       iconImage:(UIImage *)iconImage
-//        checkImage:(UIImage *)checkImage;
 
 @end
-
 

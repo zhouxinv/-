@@ -71,26 +71,27 @@
         [self.dataSourceArr addObject:model];
     }];
     
-//    _dropView = [[AHDropMenuView alloc] initWithNavigationController:self.navigationController withDelegate:self];
-    _dropView = [[AHDropMenuView alloc] initWithViewController:self withDelegate:self];
-    // 添加数据源
-//    [_dropView showWithDataSource:dataSourceArr];
-    
-
-    // 2. 多选
-    _dropView.isMultiselect = YES;
-   
-    //4. 设置下拉菜单的最大高度
-    [_dropView maxTableViewMaxRowNum:4];
-    
 }
 
 - (void)navButtonClicked:(UIButton *)btn {
     
+    if (_dropView == nil) {
+        // 2. 多选
+        _dropView = [[AHDropMenuView alloc] initWithNavigationController: self.navigationController withDelegate:self style:AHDropMenuViewStyleMutiSelect];
+        //4. 设置下拉菜单的最大高度
+        [_dropView maxTableViewMaxRowNum:4];
+
+    }
+    
     if (self.dropView.isShow) {
-        [self.dropView hide];
+        [self.dropView hideAnimated:YES];
+        _dropView = nil;
     } else {
-        [self.dropView show];
+        [self.dropView showAnimated:YES showCompletionHandler:^{
+            NSLog(@"展示动画完成");
+        } hideWhenHandler:^{
+            NSLog(@"隐藏动画的同时");
+        }];
         
     }
 }
