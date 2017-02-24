@@ -76,9 +76,9 @@
 - (void)navButtonClicked:(UIButton *)btn {
     
     if (_dropView == nil) {
-        // 2. 多选
+        // 2. 多选样式
         _dropView = [[AHDropMenuView alloc] initWithNavigationController: self.navigationController withDelegate:self style:AHDropMenuViewStyleMutiSelect];
-        //4. 设置下拉菜单的最大高度
+        //3. 设置下拉菜单的最大高度
         [_dropView maxTableViewMaxRowNum:4];
 
     }
